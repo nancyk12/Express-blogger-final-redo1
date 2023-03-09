@@ -9,7 +9,8 @@ const todoSchema = new mongoose.Schema({
     completed: {type: Boolean, default:false, required:true},
     dateCreated: {type: Date, default:Date.now(), required:true},
     dateCompleted: {type: Date},
-    status: {type:String, default:"incomplete",requred:true, enum:["incomplete", "complete", "deferred"]}
+    status: {type:String, default:"incomplete",requred:true, enum:["incomplete", "complete", "deferred"]},
+    id: { type: String, default: uuidv4}
 }); 
 
 /*name - type: string, validation: required

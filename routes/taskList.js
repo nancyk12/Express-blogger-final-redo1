@@ -13,7 +13,7 @@ router.post('/create-task', listController.createTask);
 router.put('/update-task', listController.updateTask);
 
 //3. Delete Task
-router.delete('/delete-task',listController.deleteTask);
+router.delete('/delete-task',listController.deleteOneTask);
 
 //4. Delete Multipl Tasks
 router.delete('/delete-multi', listController.deleteMultiple);
@@ -22,7 +22,7 @@ router.delete('/delete-multi', listController.deleteMultiple);
 router.post('./create-multi', listController.createMultiple);
 
 //6. Display all Tasks
-router.get('/all,' listController.getAllTasks);
+router.get('/all', listController.getAllTasks);
 
 
 
