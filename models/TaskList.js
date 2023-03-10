@@ -1,16 +1,18 @@
 //import mongoose library
 const mongoose = require("mongoose");
+const {Schema} = mongoose;
 const { v4: uuidv4 } = require("uuid");
 
 //create a todoSchema 
-const todoSchema = new mongoose.Schema({
+const todoSchema = new Schema({
+    id: { type: String, required:true, default: () => uuidv4 },
     name: {type:String, required:true},
     description: {type: String}, 
-    completed: {type: Boolean, default:false, required:true},
-    dateCreated: {type: Date, default:Date.now(), required:true},
-    dateCompleted: {type: Date},
-    status: {type:String, default:"incomplete",requred:true, enum:["incomplete", "complete", "deferred"]},
-    id: { type: String, default: uuidv4}
+    completed: {type: Boolean, default:false},
+    dateCreated: {type: Date, default:Date.now, required:true},
+    dateCompleted: {type: Date, default: ''},
+    status: {type: String, default:"incomplete", enum:["incomplete", "complete", "deferred"]}
+   
 }); 
 
 /*name - type: string, validation: required

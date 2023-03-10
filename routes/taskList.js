@@ -3,8 +3,8 @@ const express = require("express");
 const router = express.Router();
 
 // Required Functionality (Routes):
-const listController =require('../controllers/taskListController')
-
+const listController = require("../controllers/taskListControllers");
+//const taskController = require("../controllers/taskController");
 
 //1. Create Task
 router.post('/create-task', listController.createTask);
@@ -19,7 +19,7 @@ router.delete('/delete-task',listController.deleteOneTask);
 router.delete('/delete-multi', listController.deleteMultiple);
 
 //5. Create Muliple Tasks
-router.post('./create-multi', listController.createMultiple);
+router.post('/create-multi', listController.createMultiple);
 
 //6. Display all Tasks
 router.get('/all', listController.getAllTasks);

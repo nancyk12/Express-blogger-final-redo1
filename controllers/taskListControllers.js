@@ -1,4 +1,5 @@
 const listItem = require("../models/TaskList");
+const {v4: uuidv4} = require("uuid");
 
 
 // //1. Create Task
@@ -7,24 +8,18 @@ const listItem = require("../models/TaskList");
 async function createTask(req, res) {
     try {
       //parse out fields from POST request
-    /*
-taskName: String,
-    description: String,
-    completed: Boolean,
-    status: { type: String, default: 'incomplete'},
-    dateCreated: { type: Date, default: Date.now},
-    dateCompleted: {type: Date},
-    id: { type: String, default: uuidv4()},
-    */
-      const name  = req.body.name
-      const description = req.body.description 
-      const completed = req.body.completed
-      const status = req.body.status
+   
+      const id = uuidv4();
+      const name  = (req.body.name);
+      const description = (req.body.description);
+      const completed = (req.body.completed);
+      const status = (req.body.status);
       
   
       //pass fields to new Blog model 
       //notice how it's way more organized and does the type checking for us
       const newTask = new Task({
+          id,
           name,
           description,
           completed,
@@ -53,7 +48,7 @@ taskName: String,
 // router.put('/update-task', listController.updateTask);
 
 //update tasks
-async function updateTask (req, res) {
+async function updateTask (req, res, next) {
     const entryID = req.body.id;
     
     try{
@@ -76,7 +71,7 @@ async function updateTask (req, res) {
     }
     res.json ({
         success: true,
-        message: `Task ${entryID} has been updated`;
+        message: `Task ${entryID} has been updated`
     });
     };
 
@@ -96,7 +91,7 @@ async function deleteOneTask(req, res) {
     }
     res.json({
         success: true,
-        message: `blog entry id ${entryId} deleted`
+        message: `List entry id ${entryId} deleted`
     });
 };
 
